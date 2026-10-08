@@ -2,8 +2,8 @@
 
 **Programme:** Master of Information Technology, MIVA Open University  
 **Session:** 2026/2027, First Semester Continuous Assessment (40 marks)  
-**Student:** `<your full name>` | **Matric/Student ID:** `<your ID>`  
-**Database:** MySQL 8.0 (NoSQL component: `<MongoDB / Redis / other, decide in Portfolio 4>`)
+**Student:** `Christopher Akinsanmi` | **Student ID:** `<ID>`  
+**Database:** MySQL 8.0 (NoSQL component: `MongoDB / Redis / other, decide in Portfolio 4`)
 
 ---
 
