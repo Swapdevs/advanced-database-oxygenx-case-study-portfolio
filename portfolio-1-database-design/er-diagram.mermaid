@@ -1,0 +1,180 @@
+erDiagram
+    CUSTOMER ||--o| BUSINESS_PROFILE : "may have"
+    CUSTOMER ||--o{ CUSTOMER_EMPLOYMENT : "has"
+    EMPLOYER ||--o{ CUSTOMER_EMPLOYMENT : "employs"
+    CUSTOMER ||--o{ ACCOUNT : "owns"
+    ACCOUNT ||--o{ ACCOUNT_TRANSACTION : "records"
+    ACCOUNT ||--o{ TRANSFER : "sends (from)"
+    ACCOUNT ||--o{ TRANSFER : "receives (to)"
+    ACCOUNT ||--o{ CARD : "issued on"
+    ACCOUNT ||--o{ BILL_PAYMENT : "pays"
+    CUSTOMER ||--o{ LOAN_APPLICATION : "submits"
+    PRODUCT ||--o{ LOAN_APPLICATION : "applied for"
+    STAFF |o--o{ LOAN_APPLICATION : "reviews"
+    LOAN_APPLICATION ||--o| LOAN : "becomes"
+    ACCOUNT ||--o{ LOAN : "disburses to"
+    LOAN ||--o{ REPAYMENT_SCHEDULE : "has"
+    REPAYMENT_SCHEDULE ||--o{ LOAN_REPAYMENT : "settled by"
+    ACCOUNT_TRANSACTION ||--o| LOAN_REPAYMENT : "funds"
+    CUSTOMER ||--o{ BNPL_ORDER : "places"
+    BNPL_MERCHANT ||--o{ BNPL_ORDER : "receives"
+    BNPL_ORDER ||--o{ BNPL_INSTALLMENT : "split into"
+    STAFF ||--o{ INVESTMENT_FUND : "manages"
+    CUSTOMER ||--o{ INVESTMENT_ORDER : "places"
+    INVESTMENT_FUND ||--o{ INVESTMENT_ORDER : "traded in"
+    CUSTOMER ||--o{ INVESTMENT_HOLDING : "holds"
+    INVESTMENT_FUND ||--o{ INVESTMENT_HOLDING : "held in"
+
+    CUSTOMER {
+        int customer_id PK
+        enum customer_type
+        varchar first_name
+        varchar last_name
+        varchar email UK
+        varchar phone UK
+        date date_of_birth
+        enum kyc_status
+    }
+    BUSINESS_PROFILE {
+        int business_id PK
+        int customer_id FK
+        varchar business_name
+        varchar rc_number UK
+        varchar sector
+    }
+    EMPLOYER {
+        int employer_id PK
+        varchar name UK
+        varchar industry
+    }
+    CUSTOMER_EMPLOYMENT {
+        int employment_id PK
+        int customer_id FK
+        int employer_id FK
+        decimal monthly_salary
+        date start_date
+    }
+    STAFF {
+        int staff_id PK
+        varchar full_name
+        varchar email UK
+        enum role
+    }
+    PRODUCT {
+        int product_id PK
+        varchar product_code UK
+        enum category
+        decimal interest_rate
+    }
+    ACCOUNT {
+        int account_id PK
+        int customer_id FK
+        char account_number UK
+        enum account_type
+        decimal balance
+        enum status
+    }
+    ACCOUNT_TRANSACTION {
+        bigint txn_id PK
+        int account_id FK
+        enum txn_type
+        decimal amount
+        decimal balance_after
+        varchar reference UK
+    }
+    TRANSFER {
+        bigint transfer_id PK
+        int from_account_id FK
+        int to_account_id FK
+        decimal amount
+        enum status
+    }
+    CARD {
+        int card_id PK
+        int account_id FK
+        char last_four
+        enum status
+    }
+    BILL_PAYMENT {
+        bigint payment_id PK
+        int account_id FK
+        varchar biller
+        decimal amount
+        enum status
+    }
+    LOAN_APPLICATION {
+        int application_id PK
+        int customer_id FK
+        int product_id FK
+        int reviewed_by FK
+        decimal requested_amount
+        smallint tenor_months
+        enum status
+    }
+    LOAN {
+        int loan_id PK
+        int application_id FK
+        int account_id FK
+        decimal principal
+        decimal interest_rate
+        decimal outstanding_balance
+        enum status
+    }
+    REPAYMENT_SCHEDULE {
+        bigint schedule_id PK
+        int loan_id FK
+        smallint installment_no
+        date due_date
+        decimal principal_due
+        decimal interest_due
+        enum status
+    }
+    LOAN_REPAYMENT {
+        bigint repayment_id PK
+        bigint schedule_id FK
+        bigint txn_id FK
+        decimal amount_paid
+    }
+    BNPL_MERCHANT {
+        int merchant_id PK
+        varchar name UK
+        varchar category
+    }
+    BNPL_ORDER {
+        int bnpl_id PK
+        int customer_id FK
+        int merchant_id FK
+        decimal total_amount
+        tinyint plan_months
+        enum status
+    }
+    BNPL_INSTALLMENT {
+        int installment_id PK
+        int bnpl_id FK
+        tinyint installment_no
+        date due_date
+        decimal amount
+        enum status
+    }
+    INVESTMENT_FUND {
+        int fund_id PK
+        varchar fund_name UK
+        enum fund_type
+        enum risk_level
+        decimal unit_price
+        int managed_by FK
+    }
+    INVESTMENT_ORDER {
+        bigint order_id PK
+        int customer_id FK
+        int fund_id FK
+        enum order_type
+        decimal units
+        decimal unit_price
+        enum status
+    }
+    INVESTMENT_HOLDING {
+        int customer_id PK
+        int fund_id PK
+        decimal units_held
+    }
