@@ -7,18 +7,32 @@
 
 | File | Purpose |
 |---|---|
-| `schema.sql` | Creates the `oxygenx_finance` database: 21 tables, 25 foreign keys, plus `UNIQUE`, `NOT NULL`, `CHECK` and `ENUM` constraints |
-| `er-diagram.mermaid` | ER diagram source (Mermaid) |
-| `er-diagram.png` | Exported image of the ER diagram `<add after exporting>` |
-| `normalisation.md` | Step-by-step normalisation from a flat loan record to 3NF, with a BCNF check |
-| `screenshots/` | Evidence from my own run of the schema `<add screenshots>` |
+| `schema.sql` | Creates the `oxygenx_finance` database: 21 tables, 25 foreign keys, plus `UNIQUE`, `NOT NULL`, `CHECK` and `ENUM` constraints [schema.sql](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/schema.sql) |
+| `schema dashboard` | Schema dashboard display schema.sql database [schema dashboard](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/schema-dashboard.png) |
+| `er-diagram.mermaid` | ER diagram source (Mermaid) [er-diagram.mermaid](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/er-diagram.mermaid) |
+| `er-diagram.png` | Exported image of the ER diagram [er-diagram.png](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/er-diagram.png) |
+| `normalisation.md` | Step-by-step normalisation from a flat loan record to 3NF, with a BCNF check [normalisation.md](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/normalisation.md) |
+| `Result` | Evidence from my own run of the schema [Result](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/test%26result.png) |
+| `Result` | Evidence from my own run of the schema [Result]([docs/CONTRIBUTING.md](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/test%26result2.png)) |
 
 ## How it was implemented
 
 1. Chose Oxygen X Finance as the case study and listed the data and operations for each of its five services.
 2. Identified the entities and relationships and drew the ER diagram.
-3. Normalised the design (see `normalisation.md`) to remove repeating groups, partial dependencies and transitive dependencies.
+3. Normalised the design (see [normalisation.md](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/normalisation.md)) to remove repeating groups, partial dependencies and transitive dependencies.
 4. Wrote `schema.sql` with keys and constraints that enforce the business rules (for example positive amounts, non-negative balances, valid date ranges, one loan per application).
+
+## How it was implemented and Result images.
+
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+![Descriptive Alt Text](images/screenshot.png)
+
 
 ## How it was tested
 
