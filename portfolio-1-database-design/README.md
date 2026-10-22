@@ -22,17 +22,13 @@
 3. Normalised the design (see [normalisation.md](https://github.com/Swapdevs/advanced-database-oxygenx-case-study-portfolio/blob/main/portfolio-1-database-design/normalisation.md)) to remove repeating groups, partial dependencies and transitive dependencies.
 4. Wrote `schema.sql` with keys and constraints that enforce the business rules (for example positive amounts, non-negative balances, valid date ranges, one loan per application).
 
-## How it was implemented and Result images.
-
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-![Descriptive Alt Text](images/screenshot.png)
-
+## How it was implemented.
+- Update the linux server
+  ![Update linux server](/portfolio-1-database-design/update_server.png)
+- install mysql server on the linux
+  ![install mysql server on the linux](/portfolio-1-database-design/install_mysql_server.png)
+- Check the mysql version 
+  ![Check the mysql version ](/portfolio-1-database-design/check_mysql_version.png)
 
 ## How it was tested
 
@@ -44,7 +40,11 @@ mysql -u root -p -e "SELECT COUNT(*) AS tables_created FROM information_schema.T
 ```
 
 **Expected result:** `tables_created = 21` and `fk_count = 25`.
-**My result:** `<fill in after running it yourself and attach the screenshot>`
+**My result:** 
+* Test result for show tables
+![Test result](/portfolio-1-database-design/test&result.png)
+* Test Result for Table count
+![Test result](/portfolio-1-database-design/test&result2.png)
 
 ## Key design decisions
 
